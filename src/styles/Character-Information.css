@@ -1,0 +1,39 @@
+.principal-information{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:center;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+
+.toxic-summoner{
+    width: 360px;
+    padding: 0 0 2rem 0;
+    border-radius: 25px;
+    background-color: #ccc;
+    text-align: center;
+}
+
+.toxic-summoner .summoner-logo{
+    width: 100%;
+    border-radius: 25px 25px 0 0;
+}
+
+.summoner-league,
+.summoner-closeness{
+    background-color: #ccc;
+    border-radius: 25px;
+    text-align: center;
+    width: 240px;
+    height: 420px;
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
+}
+
+.summoner-league .league-summoner{
+    width: 240px;
+}
+

@@ -1,0 +1,17 @@
+
+
+.list{
+    list-style: none;
+    background-color: #ccc;
+    text-align: center; 
+    margin: 20px;
+}
+
+ul{
+    margin: 0;
+    padding: 0;
+}
+
+ul li{
+    padding-top: 1rem;
+}
