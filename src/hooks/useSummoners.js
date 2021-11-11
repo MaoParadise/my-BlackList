@@ -2,13 +2,14 @@ import { useState, useEffect } from 'react';
 
 const useSummoners = (SummonerName) => {
 
+    const baseURL = process.env.REACT_APP_API_URL;
     const [summoners, setSummoners]= useState([]);
 
     
     const getInformation = async (SummonerName) => {
         let id = ''
         let summoner = ''
-        await fetch(`https://la2.api.riotgames.com/lol/summoner/v4/summoners/by-name/${SummonerName}?api_key=RGAPI-60927491-eb4a-45a7-94a4-58b056d612d4`)
+        await fetch(`https://la2.api.riotgames.com/lol/summoner/v4/summoners/by-name/${SummonerName}?api_key=${baseURL}`)
             .then(response => response.json())
             .then(data => {
                 id = data.id;
@@ -16,7 +17,7 @@ const useSummoners = (SummonerName) => {
                 setSummoners(data); 
                 
             })
-        await fetch(`https://la2.api.riotgames.com/lol/league/v4/entries/by-summoner/${id}?api_key=RGAPI-60927491-eb4a-45a7-94a4-58b056d612d4`)
+        await fetch(`https://la2.api.riotgames.com/lol/league/v4/entries/by-summoner/${id}?api_key=${baseURL}`)
             .then(response => response.json())
             .then(data => {
                 let league = data
