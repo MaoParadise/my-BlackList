@@ -5,7 +5,7 @@ import RankedEmblems from '../components/ranked-emblems';
 import ProfileIcons from '../components/profile-icons';
 const CharacterInformation = () => {
 
-    const { summoners, getMasteryPool,getChampionInformation } = useSummoners('jokêr');
+    const { summoners, getMasteryPool } = useSummoners('jokêr');
 
     return (
         <div className='principal-information' >
@@ -17,20 +17,20 @@ const CharacterInformation = () => {
            
             <div className="toxic-summoner">
                 <ProfileIcons props={summoners.profileIconId} />
-                
                 <h3> { summoners.name } </h3>
-                <h3>
+                <div className='toxic-mastery'>
                     {
                         
                         (summoners.mastery)
                         ? getMasteryPool(3).map(mastery => {
-                            return <div key={mastery.id}>
+                            return <div className='champ-box' key={mastery.id}>
+                                        <img src={`${process.env.REACT_APP_PUBLIC_URL}/publicAssets/champion/${mastery.image.full}`} alt="" />
                                         <p>{mastery.name}</p>
                                     </div>
                         })
                         : <p> No Masteries </p>
                     }
-                </h3>
+                </div>
                 <h2> TOXICITY </h2>
                 <h1> 82% </h1>
             </div>

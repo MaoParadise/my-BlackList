@@ -48,6 +48,7 @@ const useSummoners = (SummonerName) => {
                 pool.push({
                     'id' : element.championId,
                     'name': champion[element.championId].id,
+                    'image': champion[element.championId].image,
                 });
             });
             return pool.slice(0, limit);
