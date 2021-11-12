@@ -1,26 +1,21 @@
-import React from 'react';
-import '../styles/side-left-list.css'
+import React, { useContext } from 'react';
+import '../styles/side-left-list.css';
+import GlobalContext from '../context/globalContext';
 
 const SideLeftList = () => {
+
+    const { listSummoner, setSummonerSelected } = useContext(GlobalContext);
+
     return (
         <div className='list-container'>
             <ul className="list">
-                <li> Sagner </li>
-                <li> Kaphiri </li>
-                <li> Windstyleee </li>
-                <li> Solux </li>
-                <li> Narcissist Iove</li>
-                <li> SKT Xam </li>
-                <li> Sebarine </li>
-                <li> Odio a Togordo</li>
-                <li> PalarBëë</li>
-                <li> Abąddón</li>
-                <li> Ji Soo Dior</li>
-                <li> Zeb3xy </li>
-                <li> GitoFoxc</li>
-                <li> Zoe Camp </li>
-                <li> xYasuø</li>
+                {
+                    listSummoner.map(summoner => (
+                        <li key={summoner.SummonerName} onClick={ () => setSummonerSelected(summoner.SummonerName) }> {summoner.SummonerName} </li>
+                    ))
+                }
             </ul>
+           
         </div>
     );
 }

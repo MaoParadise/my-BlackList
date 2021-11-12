@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import '../styles/Character-Information.css';
 import useSummoners from '../hooks/useSummoners';
 import RankedEmblems from '../components/ranked-emblems';
 import ProfileIcons from '../components/profile-icons';
+import GlobalContext from '../context/globalContext';
+
+
 const CharacterInformation = () => {
 
-    const { summoners, getMasteryPool } = useSummoners('jokêr');
+    const { selectSummoner } = useContext(GlobalContext);
+    const { summoners, getMasteryPool } = useSummoners(selectSummoner);
+    
 
     return (
         <div className='principal-information' >
@@ -36,7 +41,7 @@ const CharacterInformation = () => {
             </div>
             <div className='summoner-league'>
                 <h1> League </h1>
-                { (summoners.league)
+                { (summoners.league && summoners.league.length > 0)
                 ? <RankedEmblems props={summoners.league[0].tier} /> 
                 : ''
                 }      

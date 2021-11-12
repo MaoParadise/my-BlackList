@@ -5,8 +5,12 @@ import Aboutus from '../containers/AboutUs';
 import Layout from '../components/Layout';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
+import GlobalContext from '../context/globalContext';
+import useList from '../hooks/useList';
+
 function App() {
   return (
+    <GlobalContext.Provider value={useList()}>
     <BrowserRouter>
       <Layout>
         { /* in the version 6 of react-router-dom, the Routes component is deprecated and replaced by Routes 
@@ -18,6 +22,7 @@ function App() {
         </Switch>
       </Layout>
     </BrowserRouter>
+    </GlobalContext.Provider>
   ); 
 }
 

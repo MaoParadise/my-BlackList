@@ -1,3 +1,45 @@
 .Navbar{
-    border-bottom: 1px solid #ccc;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+    padding: 1.5rem 0.5rem 1.5rem 0;
+    background-color: #ccc;
+}
+
+.Navbar .navbar-search{
+    padding: 10px;
+    width: 25%;
+    border-radius: 2rem 0 0 2rem;
+    text-align: center;
+    border: 1px solid rgb(82, 82, 82, 0.2);
+}
+
+.Navbar .addlist-button{
+    padding: 10px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    background-color: #ccc;
+    border: 1px solid rgb(82, 82, 82, 0.2);
+}
+
+.Navbar .addlist-button:hover{
+    background-color: rgb(82, 82, 82);
+    color: #fff;
+}
+
+.Navbar .status-button{
+    padding: 10px;
+    border-radius: 0 2rem 2rem 0;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    background-color: rgb(245, 187, 62);
+    border: 1px  solid rgb(82, 82, 82, 0.2);
+    border-left: 0;
+}
+
+.Navbar .navbar-search:focus{
+    outline: none;
 }
