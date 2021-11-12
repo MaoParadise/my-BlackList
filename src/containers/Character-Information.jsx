@@ -5,7 +5,7 @@ import RankedEmblems from '../components/ranked-emblems';
 import ProfileIcons from '../components/profile-icons';
 const CharacterInformation = () => {
 
-    const { summoners, getMasteryPool } = useSummoners('jokêr');
+    const { summoners, getMasteryPool } = useSummoners('Windstyleee');
 
     return (
         <div className='principal-information' >

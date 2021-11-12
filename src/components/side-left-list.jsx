@@ -3,7 +3,7 @@ import '../styles/side-left-list.css'
 
 const SideLeftList = () => {
     return (
-        <div>
+        <div className='list-container'>
             <ul className="list">
                 <li> Sagner </li>
                 <li> Kaphiri </li>
