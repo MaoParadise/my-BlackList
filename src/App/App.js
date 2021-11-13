@@ -9,6 +9,8 @@ import GlobalContext from '../context/globalContext';
 import useList from '../hooks/useList';
 
 function App() {
+
+
   return (
     <GlobalContext.Provider value={useList()}>
     <BrowserRouter>

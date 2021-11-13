@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: end;
+    justify-content: flex-end;
     padding: 1.5rem 0.5rem 1.5rem 0;
     background-color: #ccc;
 }
@@ -38,6 +38,15 @@
     background-color: rgb(245, 187, 62);
     border: 1px  solid rgb(82, 82, 82, 0.2);
     border-left: 0;
+}
+
+.Navbar .status-button-error{
+    background-color: rgb(226, 17, 17);
+    color: #fff;
+}
+
+.Navbar .status-button-success{
+    background-color: rgb(31, 190, 31);
 }
 
 .Navbar .navbar-search:focus{

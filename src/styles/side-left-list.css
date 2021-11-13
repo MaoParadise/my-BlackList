@@ -27,10 +27,30 @@ ul{
 ul li{
     padding: 0.5rem 0 0.5rem 0;
     font-weight: bold;
+    cursor: pointer;
+}
+
+.list .list-summoners{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.list .list-summoners button{
+    background: none;
+    border: none;
+    color: #000;
+}
+
+.list .list-summoners button:hover{
+    color: rgb(226, 17, 17);
+    cursor: pointer;
 }
 
 .list li:hover{
     color: #fff;
     background: rgb(82, 82, 82);
-    cursor: pointer;
 }
