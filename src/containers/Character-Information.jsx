@@ -8,7 +8,7 @@ import GlobalContext from '../context/globalContext';
 
 const CharacterInformation = () => {
 
-    const { selectSummoner } = useContext(GlobalContext);
+    const { selectSummoner, selectToxicity} = useContext(GlobalContext);
     const { summoners, getMasteryPool } = useSummoners(selectSummoner);
     
 
@@ -37,7 +37,7 @@ const CharacterInformation = () => {
                     }
                 </div>
                 <h2> TOXICITY </h2>
-                <h1> 82% </h1>
+                <h3 className='toxic-lvl'> { selectToxicity } % </h3>
             </div>
             <div className='summoner-league'>
                 <h1> League </h1>
@@ -46,6 +46,7 @@ const CharacterInformation = () => {
                 : ''
                 }      
                 <h4> Division : ∞ </h4>
+                
             </div>
         </div>
     );

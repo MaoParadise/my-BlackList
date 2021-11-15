@@ -32,10 +32,10 @@ const useSummoners = (SummonerName) => {
                     .then(response => response.json())
                     .then(data => {
                         let mastery = data;
-                        console.log({
-                            ...summoner,
-                            mastery
-                        });
+                        // console.log({
+                        //     ...summoner,
+                        //     mastery
+                        // });
                         setSummoners({
                             ...summoner,
                             mastery

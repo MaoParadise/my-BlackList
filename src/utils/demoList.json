@@ -1,33 +1,43 @@
 [
 
     {
-        "SummonerName" : "Sagner"
+        "SummonerName" : "Sagner",
+        "Toxicitylvl" : 71
     },
     {
-        "SummonerName" : "Kaphiri"
+        "SummonerName" : "Kaphiri",
+        "Toxicitylvl" : 55
     },
     {
-        "SummonerName" : "Windstyleee"
+        "SummonerName" : "Windstyleee",
+        "Toxicitylvl" : 63
     },
     {
-        "SummonerName" : "Solux"
+        "SummonerName" : "Solux",
+        "Toxicitylvl" : 81
     },
     {
-        "SummonerName" : "Abąddón"
+        "SummonerName" : "Abąddón",
+        "Toxicitylvl" : 40
     },
     {
-        "SummonerName" : "Jokêr"
+        "SummonerName" : "Jokêr",
+        "Toxicitylvl" : 68
     },
     {
-        "SummonerName" : "Zeb3xy"
+        "SummonerName" : "Zeb3xy",
+        "Toxicitylvl" : 99
     },
     {
-        "SummonerName" : "GitoFoxc"
+        "SummonerName" : "GitoFoxc",
+        "Toxicitylvl" : 24
     },
     {
-        "SummonerName" : "Zoe Camp"
+        "SummonerName" : "Zoe Camp",
+        "Toxicitylvl" : 67
     },
     {
-        "SummonerName" : "xYasuø"
+        "SummonerName" : "xYasuø",
+        "Toxicitylvl" : 78
     }
 ]

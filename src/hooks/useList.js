@@ -6,6 +6,7 @@ const useList = () => {
     const [summonerSearch, setSummonerSearch] = useState('');
     const [listSummoner, setListSummoner] = useState(demoList);
     const [selectSummoner, setSelectSummoner] = useState('');
+    const [selectToxicity, setSelectToxicity] = useState(0);
     const { getInformation } = useSummoners(selectSummoner);
 
 
@@ -55,8 +56,11 @@ const useList = () => {
         setListSummoner(newList);
     }
 
-    const setSummonerSelected = (summonerName) =>{
+    const setSummonerSelected = (summonerName, toxicitylvl) =>{
+        
         setSelectSummoner(summonerName);
+
+        setSelectToxicity(toxicitylvl);
     }
 
 
@@ -72,7 +76,8 @@ const useList = () => {
         checkSummoner,
         isLoading,
         error,
-        success
+        success,
+        selectToxicity
     }
 }
 

@@ -12,7 +12,7 @@ const SideLeftList = () => {
                 {
                     listSummoner.map(summoner => (
                         <li className='list-summoners' key={summoner.SummonerName} >
-                            <div onClick={ () => setSummonerSelected(summoner.SummonerName) } >{summoner.SummonerName}</div>
+                            <div onClick={ () => setSummonerSelected(summoner.SummonerName, summoner.Toxicitylvl ) } >{summoner.SummonerName}</div>
                             <button onClick={ () => removeSummoner(summoner.SummonerName) } > <span className="material-icons-round"> cancel </span> </button>
                         </li>
                     ))
