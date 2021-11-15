@@ -19,6 +19,7 @@ const useList = () => {
         document.getElementById('status-button').classList.remove('status-button-error');
         document.getElementById('status-button').classList.remove('status-button-success');
         setSuccess(false);
+        setError(false);
     }, []);
 
     const addSummoner = async (summonerName) => {
