@@ -32,15 +32,17 @@ const useSummoners = (SummonerName) => {
                     .then(response => response.json())
                     .then(data => {
                         let mastery = data;
-                        // console.log({
-                        //     ...summoner,
-                        //     mastery
-                        // });
+                        console.log({
+                            ...summoner,
+                            mastery
+                        });
                         setSummoners({
                             ...summoner,
                             mastery
                         })
                     })
+                
+                    
             }
         } catch (error) {
             return true;
@@ -48,10 +50,9 @@ const useSummoners = (SummonerName) => {
 
     }
 
-    
-
     useEffect(  () => { // se puede usar useEffect para hacer request a una api 
         getInformation(SummonerName);
+        
     }, [SummonerName])
 
 
@@ -71,13 +72,124 @@ const useSummoners = (SummonerName) => {
         }
     }
 
-  
+    const getMaxLeague = (league) => {
+        console.log(league[0]);
+        let numbertier;
+        let numbertier2;
 
+        try{
+
+            if(league[0] && !league[1]){
+                return [{
+                    tier: league[0].tier,
+                    queue: league[0].queueType,
+                    rank: league[0].rank,
+                    }];
+            }
+
+            switch (league[0].tier) {
+                case 'BRONZE':
+                    numbertier = 1;
+                    break;
+                case 'SILVER':
+                    numbertier = 2;
+                    break;
+                case 'GOLD':
+                    numbertier = 3;
+                    break;
+                case 'PLATINUM':
+                    numbertier = 4;
+                    break;
+                case 'DIAMOND':
+                    numbertier = 5;
+                    break;
+                case 'MASTER':
+                    numbertier = 6;
+                    break;
+                case 'GRANDMASTER':
+                    numbertier = 7;
+                    break;
+                case 'CHALLENGER':
+                    numbertier = 8;
+                    break;
+                default:
+                    numbertier = 0;
+                    break;
+            }
+    
+            switch (league[1].tier) {
+                case 'BRONZE':
+                    numbertier2 = 1;
+                    break;
+                case 'SILVER':
+                    numbertier2 = 2;
+                    break;
+                case 'GOLD':
+                    numbertier2 = 3;
+                    break;
+                case 'PLATINUM':
+                    numbertier2 = 4;
+                    break;
+                case 'DIAMOND':
+                    numbertier2 = 5;
+                    break;
+                case 'MASTER':
+                    numbertier2 = 6;
+                    break;
+                case 'GRANDMASTER':
+                    numbertier2 = 7;
+                    break;
+                case 'CHALLENGER':
+                    numbertier2 = 8;
+                    break;
+                default:
+                    numbertier2 = 0;
+                    break;
+            }
+
+    
+            if (numbertier > numbertier2) {
+                return [{
+                    tier: league[0].tier,
+                    queue: league[0].queueType,
+                    rank: league[0].rank,
+                    }];
+            } else if (numbertier < numbertier2) {
+                return [{
+                        tier: league[1].tier,
+                    queue: league[1].queueType,
+                    rank: league[1].rank,
+                    }];
+            } else if (numbertier === numbertier2) {
+                if (league[0].queueType === 'RANKED_SOLO_5x5') {
+                    return [{
+                        tier: league[0].tier,
+                        queue: league[0].queueType,
+                        rank: league[1].rank,
+                    }];
+                } else {
+                    return [{
+                        tier: league[1].tier,
+                        queue: league[1].queueType,
+                        rank: league[1].rank,
+                    }];
+                }
+            }
+        }catch(error){
+            console.log(error);
+            return [];
+        }
+
+        
+    }
+
+    
 
 
     return {
         getInformation,
         getMasteryPool,
+        getMaxLeague,
         summoners
     }
 

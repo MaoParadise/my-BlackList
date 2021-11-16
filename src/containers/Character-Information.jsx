@@ -9,18 +9,27 @@ import GlobalContext from '../context/globalContext';
 const CharacterInformation = () => {
 
     const { selectSummoner, selectToxicity} = useContext(GlobalContext);
-    const { summoners, getMasteryPool } = useSummoners(selectSummoner);
+    const { summoners, getMasteryPool,getMaxLeague } = useSummoners(selectSummoner);
     
 
     return (
         <div className='principal-information' >
             <div className='summoner-closeness'>
                 <h4> Closeness </h4>
-                <h1> Highly risk </h1>
+               
                 
             </div>
            
             <div className="toxic-summoner">
+                {
+                   (selectToxicity >= 0 && selectToxicity < 35)
+                     ? <div className="safe-logo"><i class="fas fa-first-aid"></i> <p> Safe </p></div>
+                     : (selectToxicity >= 35 && selectToxicity < 65)
+                        ? <div className='warning-logo'> <i class="fas fa-exclamation-triangle"></i> <p> Warning </p> </div>
+                        : (selectToxicity >= 65 && selectToxicity <= 100)
+                            ? <div className='toxic-logo'> <i class="fas fa-radiation-alt"></i> <p> Radioactive </p> </div> 
+                            : ''
+                }
                 <ProfileIcons props={summoners.profileIconId} />
                 <h3> { summoners.name } </h3>
                 <div className='toxic-mastery'>
@@ -42,11 +51,21 @@ const CharacterInformation = () => {
             <div className='summoner-league'>
                 <h1> League </h1>
                 { (summoners.league && summoners.league.length > 0)
-                ? <RankedEmblems props={summoners.league[0].tier} /> 
-                : ''
+                ? getMaxLeague(summoners.league).map(league => {
+                    return  <div className='summoner-league-information' key={league.tier}>
+                               
+                                <RankedEmblems props={league.tier} />
+                                <p> Division : { league.rank } </p>
+                                <p className='queue' >{ 
+                                    (league.queue === 'RANKED_SOLO_5x5')
+                                    ? 'SoloQ'.toUpperCase()
+                                    : 'Flex'.toUpperCase()
+                                }</p>
+                            </div> 
+                 })
+                : <h3> 'NO LEAGUE INFORMATION' </h3> 
                 }      
-                <h4> Division : ∞ </h4>
-                
+                                
             </div>
         </div>
     );

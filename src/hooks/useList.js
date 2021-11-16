@@ -31,6 +31,7 @@ const useList = () => {
         if(check){
             setListSummoner([...listSummoner, {
                 SummonerName: summonerName,
+                Toxicitylvl: 0
             }])
             setSuccess(true);
             setError(false);    
@@ -62,6 +63,8 @@ const useList = () => {
 
         setSelectToxicity(toxicitylvl);
     }
+
+    
 
 
     return{
