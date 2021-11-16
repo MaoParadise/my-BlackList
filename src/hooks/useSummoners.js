@@ -5,16 +5,19 @@ const useSummoners = (SummonerName) => {
 
     const baseURL = process.env.REACT_APP_API_URL;
     const [summoners, setSummoners]= useState([]);
+    const [matchess, setMatches ] = useState([]);
 
     const getInformation = async (SummonerName) => {
         try {
             if (SummonerName) {
-                let id = ''
+                let id = '';
+                let puuid = '';
                 let summoner = '';
                 await fetch(`https://la2.api.riotgames.com/lol/summoner/v4/summoners/by-name/${SummonerName}?api_key=${baseURL}`)
                     .then(response => response.json())
                     .then(data => {
                         id = data.id;
+                        puuid = data.puuid;
                         summoner = data;
                         setSummoners(data);
 
@@ -32,15 +35,30 @@ const useSummoners = (SummonerName) => {
                     .then(response => response.json())
                     .then(data => {
                         let mastery = data;
-                        console.log({
-                            ...summoner,
-                            mastery
-                        });
                         setSummoners({
                             ...summoner,
                             mastery
                         })
                     })
+                await fetch(`https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid}/ids?start=0&count=4&api_key=${baseURL}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        let matchIds = data;
+                        let matches = [];
+                        matchIds.forEach((matchId) => {
+                            fetch(`https://americas.api.riotgames.com/lol/match/v5/matches/${matchId}?api_key=${baseURL}`)
+                                .then(response => response.json())
+                                .then(data => {
+                                    let match = data;
+                                    matches.push(match);
+                                    setMatches([
+                                        ...matches,
+                                        match
+                                    ])
+                                })       
+                        });
+                    })
+                    
                 
                     
             }
@@ -73,7 +91,6 @@ const useSummoners = (SummonerName) => {
     }
 
     const getMaxLeague = (league) => {
-        console.log(league[0]);
         let numbertier;
         let numbertier2;
 
@@ -190,7 +207,8 @@ const useSummoners = (SummonerName) => {
         getInformation,
         getMasteryPool,
         getMaxLeague,
-        summoners
+        summoners,
+        matchess
     }
 
 }

@@ -8,26 +8,30 @@ import GlobalContext from '../context/globalContext';
 
 const CharacterInformation = () => {
 
+    let i = 0;
     const { selectSummoner, selectToxicity} = useContext(GlobalContext);
-    const { summoners, getMasteryPool,getMaxLeague } = useSummoners(selectSummoner);
+    const { summoners, getMasteryPool,getMaxLeague, matchess } = useSummoners(selectSummoner);
     
 
     return (
         <div className='principal-information' >
             <div className='summoner-closeness'>
-                <h4> Closeness </h4>
-               
-                
+                {
+                    
+                    matchess.map(match => {
+                       return <p key={i++}> {match.info.gameMode} </p>
+                    })
+                }               
             </div>
-           
+           <button onClick={ ()=> console.log(matchess)}>ss</button>
             <div className="toxic-summoner">
                 {
                    (selectToxicity >= 0 && selectToxicity < 35)
-                     ? <div className="safe-logo"><i class="fas fa-first-aid"></i> <p> Safe </p></div>
+                     ? <div className="safe-logo"><i className="fas fa-first-aid"></i> <p> Safe </p></div>
                      : (selectToxicity >= 35 && selectToxicity < 65)
-                        ? <div className='warning-logo'> <i class="fas fa-exclamation-triangle"></i> <p> Warning </p> </div>
+                        ? <div className='warning-logo'> <i className="fas fa-exclamation-triangle"></i> <p> Warning </p> </div>
                         : (selectToxicity >= 65 && selectToxicity <= 100)
-                            ? <div className='toxic-logo'> <i class="fas fa-radiation-alt"></i> <p> Radioactive </p> </div> 
+                            ? <div className='toxic-logo'> <i className="fas fa-radiation-alt"></i> <p> Radioactive </p> </div> 
                             : ''
                 }
                 <ProfileIcons props={summoners.profileIconId} />
