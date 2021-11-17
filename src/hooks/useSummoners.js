@@ -11,6 +11,7 @@ const useSummoners = (SummonerName) => {
 
     const getInformation = async (SummonerName) => {
         try {
+            setWhoWin([]);
             if (SummonerName) {
                 let id = '';
                 let puuid = '';
@@ -57,14 +58,55 @@ const useSummoners = (SummonerName) => {
                                 .then(data => {
                                     let match = data;
                                     matches.push(match);
+                                    let who = [];
+                                    console.log('--------------');
+                                    if(matches[0] && matches[1] && matches[2] && matches[3] && matches[4]) {
+                                        let match1, match2, match3, match4, match5;
+                                        match1 = matches[0].info.participants.filter(participant => (participant.puuid === puuid));
+                                        match2 = matches[1].info.participants.filter(participant => (participant.puuid === puuid));
+                                        match3 = matches[2].info.participants.filter(participant => (participant.puuid === puuid));
+                                        match4 = matches[3].info.participants.filter(participant => (participant.puuid === puuid));
+                                        match5 = matches[4].info.participants.filter(participant => (participant.puuid === puuid));
+
+                                        who = [
+                                            {
+                                                'champion': match1[0].championId,
+                                                'win': match1[0].win
+                                            },
+                                            {
+                                                'champion': match2[0].championId,
+                                                'win': match2[0].win
+                                            },
+                                            {
+                                                'champion': match3[0].championId,
+                                                'win': match3[0].win
+                                            },
+                                            {
+                                                'champion': match4[0].championId,
+                                                'win': match4[0].win
+                                            },
+                                            {
+                                                'champion': match5[0].championId,
+                                                'win': match5[0].win
+                                            }
+                                        ]
+
+                                        setWhoWin(
+                                            who
+                                        );
+                                        
+                                    }
+
+
+
                                     setMatches([
                                         ...matches,
                                         match
                                     ])
+                                    
                                 })       
                         });
                     })
-                    
                 
                     
             }
@@ -76,7 +118,6 @@ const useSummoners = (SummonerName) => {
 
     useEffect(  () => { // se puede usar useEffect para hacer request a una api 
         getInformation(SummonerName);
-        
     }, [SummonerName])
 
 
@@ -206,11 +247,6 @@ const useSummoners = (SummonerName) => {
         
     }
 
-   const whoWining = (summoner) => {
-
-       
-   }
-
 
     return {
         getInformation,
@@ -218,7 +254,7 @@ const useSummoners = (SummonerName) => {
         getMaxLeague,
         summoners,
         matchess,
-        whoWining,
+        whoWin,
         championList
     }
 

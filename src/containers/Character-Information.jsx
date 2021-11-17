@@ -4,29 +4,28 @@ import useSummoners from '../hooks/useSummoners';
 import RankedEmblems from '../components/ranked-emblems';
 import ProfileIcons from '../components/profile-icons';
 import GlobalContext from '../context/globalContext';
-
+import champions from '../utils/champion.json'
 
 const CharacterInformation = () => {
 
     let i = 0;
     const { selectSummoner, selectToxicity} = useContext(GlobalContext);
-    const { summoners, getMasteryPool,getMaxLeague, matchess,whoWining,championList } = useSummoners(selectSummoner);
+    const { summoners, getMasteryPool,getMaxLeague, whoWin } = useSummoners(selectSummoner);
     
 
     return (
         <div className='principal-information' >
             <div className='summoner-closeness'>
                 {
-                    whoWining(summoners)
-                    // (summoners && matchess)
-                    // ? whoWin(matchess, summoners ).map(match => {
-                    //     return <div className='summoner-matches'>
-                    //                 <img src={`${process.env.REACT_APP_PUBLIC_URL}/publicAssets/champion/${championList[match.champion].image.full}`} alt="" />
-                    //                 <p>{ (match.win)? 'VICTORIA' :'DERROTA'}</p>
-                    //             </div>
-                    // })
-                    // : ''
-                }       
+                    (whoWin)
+                    ? whoWin.map(match => {
+                        return  <div className='summoner-matches' key={i++}>
+                                    <img src={`${process.env.REACT_APP_PUBLIC_URL}/publicAssets/champion/${champions[match.champion].image.full}`} alt="" />
+                                    <p className={(match.win)? 'victory' : 'defeat'}>{ (match.win)? 'VICTORY' : 'DEFEAT' }</p>
+                                </div>
+                    })
+                    : <h3> NO MATCH FOUNDED </h3>
+                }
             </div>
            
             <div className="toxic-summoner">

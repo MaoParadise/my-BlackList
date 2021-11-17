@@ -137,20 +137,39 @@
 .summoner-closeness{
     display: flex;
     flex-direction: column-reverse;
-    align-items: center;
     justify-content: center;
+    padding: 0;
 }
 
 .summoner-closeness .summoner-matches{
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
-    margin-top: 1rem;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .summoner-closeness .summoner-matches img{
+    background: rgb(82, 82, 82);
+    padding-left: 1rem;
     width: 30%;
+}
+
+.summoner-closeness .summoner-matches p{
+    display: flex;
+    font-weight: bold;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+    height: 100%;
+}
+
+.summoner-closeness .summoner-matches .victory{
+    background-color: rgb(134, 206, 76,0.8);
+}
+
+.summoner-closeness .summoner-matches .defeat{
+    background-color: rgb(226, 17, 17,0.8);
 }
 
 
