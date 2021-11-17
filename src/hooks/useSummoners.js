@@ -3,9 +3,11 @@ import champion from '../utils/champion.json';
 
 const useSummoners = (SummonerName) => {
 
+    const championList = champion;
     const baseURL = process.env.REACT_APP_API_URL;
     const [summoners, setSummoners]= useState([]);
     const [matchess, setMatches ] = useState([]);
+    const [whoWin, setWhoWin] = useState([]);
 
     const getInformation = async (SummonerName) => {
         try {
@@ -35,12 +37,16 @@ const useSummoners = (SummonerName) => {
                     .then(response => response.json())
                     .then(data => {
                         let mastery = data;
+                        console.log({
+                            ...summoner,
+                            mastery
+                        })
                         setSummoners({
                             ...summoner,
                             mastery
                         })
                     })
-                await fetch(`https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid}/ids?start=0&count=4&api_key=${baseURL}`)
+                await fetch(`https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid}/ids?start=0&count=5&api_key=${baseURL}`)
                     .then(response => response.json())
                     .then(data => {
                         let matchIds = data;
@@ -200,7 +206,10 @@ const useSummoners = (SummonerName) => {
         
     }
 
-    
+   const whoWining = (summoner) => {
+
+       
+   }
 
 
     return {
@@ -208,7 +217,9 @@ const useSummoners = (SummonerName) => {
         getMasteryPool,
         getMaxLeague,
         summoners,
-        matchess
+        matchess,
+        whoWining,
+        championList
     }
 
 }

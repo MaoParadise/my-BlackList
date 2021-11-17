@@ -136,9 +136,21 @@
 
 .summoner-closeness{
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     align-items: center;
     justify-content: center;
+}
+
+.summoner-closeness .summoner-matches{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 1rem;
+}
+
+.summoner-closeness .summoner-matches img{
+    width: 30%;
 }
 
 

@@ -10,20 +10,25 @@ const CharacterInformation = () => {
 
     let i = 0;
     const { selectSummoner, selectToxicity} = useContext(GlobalContext);
-    const { summoners, getMasteryPool,getMaxLeague, matchess } = useSummoners(selectSummoner);
+    const { summoners, getMasteryPool,getMaxLeague, matchess,whoWining,championList } = useSummoners(selectSummoner);
     
 
     return (
         <div className='principal-information' >
             <div className='summoner-closeness'>
                 {
-                    
-                    matchess.map(match => {
-                       return <p key={i++}> {match.info.gameMode} </p>
-                    })
-                }               
+                    whoWining(summoners)
+                    // (summoners && matchess)
+                    // ? whoWin(matchess, summoners ).map(match => {
+                    //     return <div className='summoner-matches'>
+                    //                 <img src={`${process.env.REACT_APP_PUBLIC_URL}/publicAssets/champion/${championList[match.champion].image.full}`} alt="" />
+                    //                 <p>{ (match.win)? 'VICTORIA' :'DERROTA'}</p>
+                    //             </div>
+                    // })
+                    // : ''
+                }       
             </div>
-           <button onClick={ ()=> console.log(matchess)}>ss</button>
+           
             <div className="toxic-summoner">
                 {
                    (selectToxicity >= 0 && selectToxicity < 35)
