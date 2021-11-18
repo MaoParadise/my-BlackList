@@ -1,12 +1,28 @@
 .principal-content{
     display: flex;
     flex-direction: row;
+    position: relative;
 }
 
 .principal-content > div:nth-child(1){
     width: 18%;
 }
 
+
+
 .principal-content > div:nth-child(2){
     width: 82%;
 }
+
+@media (max-width: 768px) {
+    .principal-content > div:nth-child(1){
+        position: absolute;
+        z-index: 2;
+        width: 85%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+        
+    }
+}
+

@@ -3,6 +3,7 @@
 }
 
 
+
 .list{
     display: flex;
     flex-direction: column-reverse;
@@ -53,4 +54,24 @@ ul li{
 .list li:hover{
     color: #fff;
     background: rgb(82, 82, 82);
+}
+
+
+@media (max-width: 768px) {
+    .list{
+        padding: 20px 0 20px 0;
+        margin: 0;
+        border-radius: 0;
+        height: 100%;
+    }
+}
+
+
+
+.principal-content .dissapear{
+    display: none;
+}
+
+.principal-content .appear{
+    display: block;
 }

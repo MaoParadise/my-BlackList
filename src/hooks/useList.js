@@ -9,6 +9,7 @@ const useList = () => {
     const [selectToxicity, setSelectToxicity] = useState(0);
     const { getInformation } = useSummoners(selectSummoner);
 
+    const [handleMenu, setHandleMenu] = useState(false);
 
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(false);
@@ -22,6 +23,13 @@ const useList = () => {
         setSuccess(false);
         setError(false);
     }, []);
+
+
+    const handleOpenMenu = () => {
+        setHandleMenu(!handleMenu);
+        console.log(handleMenu);
+    }
+
 
     const addSummoner = async (summonerName) => {
         let check = false;
@@ -80,7 +88,9 @@ const useList = () => {
         isLoading,
         error,
         success,
-        selectToxicity
+        selectToxicity,
+        handleOpenMenu,
+        handleMenu
     }
 }
 

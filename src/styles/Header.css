@@ -52,3 +52,21 @@
 .Navbar .navbar-search:focus{
     outline: none;
 }
+
+.Navbar .fa-bars{
+    display: none;
+}
+
+
+@media screen and (max-width: 768px){
+   .Navbar .fa-bars{
+        padding: 10px;
+        cursor: pointer;
+        text-align: center;
+        font-weight: bold;
+        border: 1px solid rgb(82, 82, 82, 0.2);
+        border-radius: 2rem;
+        margin-right: 15px;
+        display: block;
+   }
+}

@@ -4,10 +4,11 @@ import GlobalContext from '../context/globalContext'
 
 const Header = () => {
 
-    const {summonerSearch, addSummoner, handleSearch, isLoading, error, success} = useContext(GlobalContext);
+    const {summonerSearch, addSummoner, handleSearch, isLoading, error, success, handleOpenMenu} = useContext(GlobalContext);
 
     return (
         <nav className="Navbar">
+            <i onClick={ () => handleOpenMenu() } className="fas fa-bars"></i>
             <input type="search" className='navbar-search' name="navbar-search" value={summonerSearch} onChange={handleSearch}/>
             <button className='addlist-button' onClick={ () => addSummoner(summonerSearch) }> Add to the Black List + </button>
             <button id='status-button' className={`status-button

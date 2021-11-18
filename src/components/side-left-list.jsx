@@ -4,10 +4,10 @@ import GlobalContext from '../context/globalContext';
 
 const SideLeftList = () => {
 
-    const { listSummoner, setSummonerSelected,removeSummoner } = useContext(GlobalContext);
+    const { listSummoner, setSummonerSelected,removeSummoner,handleMenu } = useContext(GlobalContext);
 
     return (
-        <div className='list-container'>
+        <div className={`list-container ${(handleMenu)? 'appear' : 'dissapear' }`}>)
             <ul className="list">
                 {
                     listSummoner.map(summoner => (
