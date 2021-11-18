@@ -64,14 +64,15 @@ ul li{
         border-radius: 0;
         height: 100%;
     }
+    
+    .principal-content .dissapear{
+        display: none;
+    }
+    
+    .principal-content .appear{
+        display: block;
+    }
 }
 
 
 
-.principal-content .dissapear{
-    display: none;
-}
-
-.principal-content .appear{
-    display: block;
-}

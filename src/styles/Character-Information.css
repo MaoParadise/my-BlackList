@@ -6,6 +6,7 @@
     
     /* background-color: #f5f5f5; */
     padding: 10px;
+    position: relative;
 }
 
 
@@ -195,4 +196,37 @@
 
 .toxic-summoner .toxic-lvl{
     color: rgb(226, 17, 17);
+}
+
+
+@media (max-width: 768px) {
+    .principal-information{
+        flex-direction: column;
+    }
+
+    .toxic-summoner{
+        order: -1;
+        margin-bottom: 1rem;
+        height: 1.5rem;
+        padding: 0 0 40rem 0;
+    }
+
+    .summoner-closeness{
+      position: absolute;
+      top: 44rem;
+      left: 1rem;
+      margin-left: 0;
+      margin-right: 0;
+      z-index: 1;  
+    }
+
+    .summoner-league{
+        position: absolute;
+        top: 44rem;
+        right: 1rem;
+        margin-left: 0;
+        margin-right: 0;
+        z-index: 1;
+    }
+
 }
