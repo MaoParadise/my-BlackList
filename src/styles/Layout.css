@@ -19,10 +19,9 @@
         position: absolute;
         z-index: 2;
         width: 85%;
-        height: 100%;
         align-items: center;
         justify-content: center;
-        
+        transform: translateY(-1.35rem);
     }
 
     .principal-content > div:nth-child(2){

@@ -211,21 +211,32 @@
         padding: 0 0 40rem 0;
     }
 
+
+    .summoner-closeness,
+    .summoner-league{
+        width: 50%;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+    }
+
     .summoner-closeness{
       position: absolute;
       top: 44rem;
-      left: 1rem;
+      left: 0;
       margin-left: 0;
       margin-right: 0;
+      border-radius: 25px 0 0 25px;
       z-index: 1;  
     }
 
     .summoner-league{
         position: absolute;
         top: 44rem;
-        right: 1rem;
+        right: 0;
         margin-left: 0;
         margin-right: 0;
+        border-radius: 0 25px 25px 0;
         z-index: 1;
     }
 

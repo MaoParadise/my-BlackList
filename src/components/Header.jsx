@@ -8,6 +8,11 @@ const Header = () => {
 
     return (
         <nav className="Navbar">
+            <div className="title">
+                <i className="fas fa-gamepad"></i>
+                <i className="fas fa-ban"></i>
+                <h1> My Summoner's Black List </h1>
+            </div>
             <i onClick={ () => handleOpenMenu() } className="fas fa-bars"></i>
             <input type="search" className='navbar-search' name="navbar-search" value={summonerSearch} onChange={handleSearch}/>
             <button className='addlist-button' onClick={ () => addSummoner(summonerSearch) }> Add to the Black List + </button>
