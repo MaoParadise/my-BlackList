@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import champion from '../utils/champion.json';
 
 const useSummoners = (SummonerName) => {
@@ -9,7 +9,7 @@ const useSummoners = (SummonerName) => {
     const [matchess, setMatches ] = useState([]);
     const [whoWin, setWhoWin] = useState([]);
 
-    const getInformation = async (SummonerName) => {
+    const getInformation = useCallback( async (SummonerName) => {
         try {
             setWhoWin([]);
             if (SummonerName) {
@@ -114,11 +114,11 @@ const useSummoners = (SummonerName) => {
             return true;
         }
 
-    }
+    },[baseURL])
 
     useEffect(  () => { // se puede usar useEffect para hacer request a una api 
         getInformation(SummonerName);
-    }, [SummonerName])
+    }, [SummonerName, getInformation])
 
 
     const getMasteryPool = (limit) => {
