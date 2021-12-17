@@ -4,7 +4,6 @@ import champion from '../utils/champion.json';
 const useSummoners = (SummonerName) => {
 
     const championList = champion;
-    const baseURL = process.env.REACT_APP_API_URL;
     const [summoners, setSummoners]= useState([]);
     const [matchess, setMatches ] = useState([]);
     const [whoWin, setWhoWin] = useState([]);
@@ -13,53 +12,26 @@ const useSummoners = (SummonerName) => {
         try {
             setWhoWin([]);
             if (SummonerName) {
-                let id = '';
                 let puuid = '';
-                let summoner = '';
-                await fetch(`https://la2.api.riotgames.com/lol/summoner/v4/summoners/by-name/${SummonerName}?api_key=${baseURL}`)
+                await fetch(`https://black-list-api.herokuapp.com/api/summoner/${SummonerName}`)
                     .then(response => response.json())
                     .then(data => {
-                        id = data.id;
                         puuid = data.puuid;
-                        summoner = data;
                         setSummoners(data);
 
                     })
-                await fetch(`https://la2.api.riotgames.com/lol/league/v4/entries/by-summoner/${id}?api_key=${baseURL}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        let league = data;
-                        summoner = {
-                            ...summoner,
-                            league
-                        };
-                    })
-                await fetch(`https://la2.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/${id}?api_key=${baseURL}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        let mastery = data;
-                        console.log({
-                            ...summoner,
-                            mastery
-                        })
-                        setSummoners({
-                            ...summoner,
-                            mastery
-                        })
-                    })
-                await fetch(`https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid}/ids?start=0&count=5&api_key=${baseURL}`)
+                await fetch(`https://black-list-api.herokuapp.com/api/matches/${puuid}`)
                     .then(response => response.json())
                     .then(data => {
                         let matchIds = data;
                         let matches = [];
                         matchIds.forEach((matchId) => {
-                            fetch(`https://americas.api.riotgames.com/lol/match/v5/matches/${matchId}?api_key=${baseURL}`)
+                            fetch(`https://black-list-api.herokuapp.com/api//whoWon/${matchId}`)
                                 .then(response => response.json())
                                 .then(data => {
                                     let match = data;
                                     matches.push(match);
                                     let who = [];
-                                    console.log('--------------');
                                     if(matches[0] && matches[1] && matches[2] && matches[3] && matches[4]) {
                                         let match1, match2, match3, match4, match5;
                                         match1 = matches[0].info.participants.filter(participant => (participant.puuid === puuid));
@@ -114,7 +86,7 @@ const useSummoners = (SummonerName) => {
             return true;
         }
 
-    },[baseURL])
+    },[])
 
     useEffect(  () => { // se puede usar useEffect para hacer request a una api 
         getInformation(SummonerName);
